@@ -1,0 +1,16 @@
+{
+  "questions": [
+    {
+      "question": "In which programming language did I write my first line of code?",
+      "options": ["JavaScript", "Python", "C++", "Java"],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "Which field did I graduate from?",
+      "options": ["Economics", "Math", "Philosophy", "English language"],
+      "correctOption": 0,
+      "points": 10
+    }
+  ]
+}
