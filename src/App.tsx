@@ -1,8 +1,7 @@
 import { useEffect, useReducer } from "react";
 import Question from "./Question";
 import MainEl from "./MainEl";
-import Button from "./Button";
-
+import Progress from "./Progress";
 // Possible statuses: 'loading', 'error', 'ready', 'active', 'finished'
 
 const API = "http://localhost:8000/questions";
@@ -63,11 +62,14 @@ function App() {
   return (
     <MainEl>
       {status === "ready" && (
-        <Question
-          question={questions[index]}
-          dispatch={dispatch}
-          answer={answer}
-        />
+        <>
+          <Progress questions={questions} index={index} score={score} />
+          <Question
+            question={questions[index]}
+            dispatch={dispatch}
+            answer={answer}
+          />
+        </>
       )}
     </MainEl>
   );
