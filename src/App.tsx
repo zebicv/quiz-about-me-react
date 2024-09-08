@@ -1,6 +1,7 @@
 import { useEffect, useReducer } from "react";
 import Question from "./Question";
 import MainEl from "./MainEl";
+import Button from "./Button";
 
 // Possible statuses: 'loading', 'error', 'ready', 'active', 'finished'
 
@@ -19,9 +20,27 @@ function reducer(state, action) {
   switch (action.type) {
     case "dataReceived":
       return {
-        ...initialState,
+        ...state,
         questions: action.payload,
         status: "ready",
+      };
+    case "newAnswer": {
+      const question = state.questions.at(state.index);
+
+      return {
+        ...state,
+        answer: action.payload,
+        score:
+          action.payload === question["correctOption"]
+            ? state.score + question["points"]
+            : 0,
+      };
+    }
+    case "nextQuestion":
+      return {
+        ...state,
+        index: state.index++,
+        answer: null,
       };
   }
 }
@@ -29,7 +48,7 @@ function reducer(state, action) {
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { questions, status, index } = state;
+  const { questions, status, index, answer, score, highscore } = state;
   console.log(questions);
 
   useEffect(() => {
@@ -43,7 +62,13 @@ function App() {
 
   return (
     <MainEl>
-      {status === "ready" && <Question question={questions[index]} />}
+      {status === "ready" && (
+        <Question
+          question={questions[index]}
+          dispatch={dispatch}
+          answer={answer}
+        />
+      )}
     </MainEl>
   );
 }
