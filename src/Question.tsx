@@ -18,6 +18,7 @@ function Question({ question, dispatch, answer }) {
             index={index}
             key={index}
             isAnswered={isAnswered}
+            answer={answer}
           />
         ))}
       </ul>
