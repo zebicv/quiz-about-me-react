@@ -3,6 +3,7 @@ import Question from "./Question";
 import MainEl from "./MainEl";
 import Progress from "./Progress";
 import FinishScreen from "./FinishScreen";
+
 // Possible statuses: 'loading', 'error', 'ready', 'active', 'finished'
 
 const API = "http://localhost:8000/questions";
@@ -44,6 +45,7 @@ function reducer(state, action) {
         return {
           ...state,
           status: "finished",
+          answer: null,
         };
       } else {
         return {

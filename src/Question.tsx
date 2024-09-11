@@ -4,7 +4,6 @@ import Button from "./Button";
 function Question({ question, dispatch, answer }) {
   const isAnswered = answer !== null ? true : false;
 
-  console.log(question);
   return (
     <div className="flex flex-col min-w-[600px]">
       <p className="text-white mb-4 text-xl font-semibold">
