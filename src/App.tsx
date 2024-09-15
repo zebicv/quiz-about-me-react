@@ -46,6 +46,8 @@ function reducer(state, action) {
           ...state,
           status: "finished",
           answer: null,
+          highscore:
+            state.score > state.highscore ? state.score : state.highscore,
         };
       } else {
         return {
@@ -62,7 +64,6 @@ function reducer(state, action) {
         index: 0,
         answer: null,
         score: 0,
-        highscore: 0,
       };
   }
 }
@@ -89,7 +90,12 @@ function App() {
   return (
     <MainEl>
       {status === "finished" && (
-        <FinishScreen score={score} maxScore={maxScore} dispatch={dispatch} />
+        <FinishScreen
+          score={score}
+          maxScore={maxScore}
+          dispatch={dispatch}
+          highscore={highscore}
+        />
       )}
       {status === "ready" && (
         <>

@@ -13,10 +13,10 @@ function Question({ question, dispatch, answer }) {
       <ul className="flex flex-col gap-3 mb-4">
         {question.options.map((option, index) => (
           <Option
+            key={index}
             option={option}
             dispatch={dispatch}
             index={index}
-            key={index}
             isAnswered={isAnswered}
             answer={answer}
             correctAnswer={correctAnswer}

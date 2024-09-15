@@ -5,7 +5,7 @@ function Progress({ questions, index, score, maxScore }) {
   return (
     <div className="text-white mb-10 w-full">
       <progress
-        className="w-full rounded-full overflow-hidden"
+        className="w-full rounded-full overflow-hidden w3-red"
         value={index}
         max={questionsLength}
       ></progress>
