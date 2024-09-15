@@ -3,6 +3,7 @@ import Button from "./Button";
 
 function Question({ question, dispatch, answer }) {
   const isAnswered = answer !== null ? true : false;
+  const correctAnswer = question["correctOption"];
 
   return (
     <div className="flex flex-col min-w-[600px]">
@@ -18,6 +19,7 @@ function Question({ question, dispatch, answer }) {
             key={index}
             isAnswered={isAnswered}
             answer={answer}
+            correctAnswer={correctAnswer}
           />
         ))}
       </ul>
