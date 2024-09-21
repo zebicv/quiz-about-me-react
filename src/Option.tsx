@@ -17,7 +17,9 @@ function Option({
     <li>
       <button
         disabled={isAnswered}
-        className={`text-white bg-zinc-500 text-left w-full rounded-full pl-6 py-4 ${
+        className={`text-white text-left w-full rounded-full pl-6 py-4 ${
+          isAnswered && !isSelectedOption && !isCorrectOption && "bg-zinc-500"
+        } ${!isAnswered && "bg-zinc-500"} ${
           isCorrectOption && isAnswered
             ? "bg-green-500 translate-x-2  transition-all  duration-300"
             : ""

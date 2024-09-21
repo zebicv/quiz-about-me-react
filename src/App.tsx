@@ -3,6 +3,9 @@ import Question from "./Question";
 import MainEl from "./MainEl";
 import Progress from "./Progress";
 import FinishScreen from "./FinishScreen";
+import Timer from "./Timer";
+import Button from "./Button";
+import Footer from "./Footer";
 
 // Possible statuses: 'loading', 'error', 'ready', 'active', 'finished'
 
@@ -74,9 +77,12 @@ function App() {
   const { questions, status, index, answer, score, highscore } = state;
 
   const maxScore = questions.reduce(
-    (accumulator, currentValue) => accumulator + currentValue.points,
+    (accumulator: number, currentValue: number) =>
+      accumulator + currentValue.points,
     0
   );
+
+  const isAnswered = answer !== null ? true : false;
 
   useEffect(() => {
     async function apiCall() {
@@ -110,6 +116,10 @@ function App() {
             dispatch={dispatch}
             answer={answer}
           />
+          <Footer>
+            <Timer />
+            <Button dispatch={dispatch} isAnswered={isAnswered} />
+          </Footer>
         </>
       )}
     </MainEl>

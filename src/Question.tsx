@@ -1,12 +1,11 @@
 import Option from "./Option";
-import Button from "./Button";
 
 function Question({ question, dispatch, answer }) {
   const isAnswered = answer !== null ? true : false;
-  const correctAnswer = question["correctOption"];
+  const correctAnswer = question["correctOption"]; //1
 
   return (
-    <div className="flex flex-col min-w-[600px]">
+    <div className="flex flex-col min-w-[600px] mb-5">
       <p className="text-white mb-4 text-xl font-semibold">
         {question?.question}
       </p>
@@ -23,7 +22,6 @@ function Question({ question, dispatch, answer }) {
           />
         ))}
       </ul>
-      <Button dispatch={dispatch} isAnswered={isAnswered} />
     </div>
   );
 }
