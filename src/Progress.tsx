@@ -1,4 +1,4 @@
-function Progress({ questions, index, score, maxScore }) {
+function Progress({ questions, index, score, maxPossibleScore }) {
   const questionsLength = questions.length;
   const questionNumber = parseInt(index + 1);
 
@@ -14,7 +14,7 @@ function Progress({ questions, index, score, maxScore }) {
           Question <strong>{questionNumber}</strong> / {questionsLength}
         </p>
         <p>
-          Score {score}/{maxScore}
+          Score {score}/{maxPossibleScore}
         </p>
       </div>
     </div>

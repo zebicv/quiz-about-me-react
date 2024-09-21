@@ -2,6 +2,7 @@ import { useEffect, useReducer } from "react";
 import Question from "./Question";
 import MainEl from "./MainEl";
 import Progress from "./Progress";
+import StartScreen from "./StartScreen";
 import FinishScreen from "./FinishScreen";
 import Timer from "./Timer";
 import Button from "./Button";
@@ -11,7 +12,7 @@ import Footer from "./Footer";
 
 const API = "http://localhost:8000/questions";
 
-const SECS_PER_QUESTION = 30;
+const SECS_PER_QUESTION = 1;
 
 const initialState = {
   questions: [],
@@ -20,6 +21,7 @@ const initialState = {
   answer: null,
   score: 0,
   highscore: 0,
+  secondsRemaining: null,
 };
 
 function reducer(state, action) {
@@ -30,6 +32,20 @@ function reducer(state, action) {
         questions: action.payload,
         status: "ready",
       };
+    case "startGame":
+      return {
+        ...state,
+        status: "active",
+        secondsRemaining: state.questions.length * SECS_PER_QUESTION,
+      };
+    case "tick": {
+      return {
+        ...state,
+        secondsRemaining:
+          state.secondsRemaining < 1 ? 0 : state.secondsRemaining - 1,
+        status: state.secondsRemaining < 1 ? "finished" : "active",
+      };
+    }
     case "newAnswer": {
       const question = state.questions.at(state.index);
 
@@ -63,10 +79,11 @@ function reducer(state, action) {
     case "restartGame":
       return {
         ...state,
-        status: "ready",
+        status: "active",
         index: 0,
         answer: null,
         score: 0,
+        secondsRemaining: state.questions.length * SECS_PER_QUESTION,
       };
   }
 }
@@ -74,15 +91,24 @@ function reducer(state, action) {
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { questions, status, index, answer, score, highscore } = state;
+  const {
+    questions,
+    status,
+    index,
+    answer,
+    score,
+    highscore,
+    secondsRemaining,
+  } = state;
 
-  const maxScore = questions.reduce(
+  const maxPossibleScore = questions.reduce(
     (accumulator: number, currentValue: number) =>
       accumulator + currentValue.points,
     0
   );
 
   const isAnswered = answer !== null ? true : false;
+  // const numQuestios = questions.length;
 
   useEffect(() => {
     async function apiCall() {
@@ -95,21 +121,14 @@ function App() {
 
   return (
     <MainEl>
-      {status === "finished" && (
-        <FinishScreen
-          score={score}
-          maxScore={maxScore}
-          dispatch={dispatch}
-          highscore={highscore}
-        />
-      )}
-      {status === "ready" && (
+      {status === "ready" && <StartScreen dispatch={dispatch} />}
+      {status === "active" && (
         <>
           <Progress
             questions={questions}
             index={index}
             score={score}
-            maxScore={maxScore}
+            maxPossibleScore={maxPossibleScore}
           />
           <Question
             question={questions[index]}
@@ -117,10 +136,18 @@ function App() {
             answer={answer}
           />
           <Footer>
-            <Timer />
+            <Timer secondsRemaining={secondsRemaining} dispatch={dispatch} />
             <Button dispatch={dispatch} isAnswered={isAnswered} />
           </Footer>
         </>
+      )}
+      {status === "finished" && (
+        <FinishScreen
+          score={score}
+          maxPossibleScore={maxPossibleScore}
+          dispatch={dispatch}
+          highscore={highscore}
+        />
       )}
     </MainEl>
   );
