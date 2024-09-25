@@ -1,6 +1,6 @@
 function MainEl({ children }) {
   return (
-    <main className="min-h-screen flex flex-col justify-center items-center">
+    <main className="sm:w-[600px] min-h-screen flex flex-col justify-center items-center w-[90%]">
       {children}
     </main>
   );

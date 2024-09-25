@@ -7,7 +7,7 @@ function FinishScreen({ score, maxPossibleScore, dispatch, highscore }) {
 
   return (
     <div>
-      <p className="text-white bg-sky-500 px-20 py-4 rounded-full mb-2">
+      <p className="text-white bg-sky-500 px-10 sm:px-20 py-4 rounded-full mb-2">
         You scored <span className="font-semibold">{score}</span> out of{" "}
         <span className="font-semibold">{maxPossibleScore}</span> ({percentage}
         %)

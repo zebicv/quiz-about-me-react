@@ -13,7 +13,7 @@ function Timer({ secondsRemaining, dispatch }) {
   }, []);
 
   return (
-    <div className="bg-zinc-500 px-6 py-4 rounded-full">
+    <div className="border-zinc-500 border-2 px-6 py-4 rounded-full">
       {minutes < 10 && "0"}
       {minutes}:{seconds < 10 && "0"}
       {seconds}

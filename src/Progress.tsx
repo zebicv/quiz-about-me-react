@@ -5,8 +5,8 @@ function Progress({ questions, index, score, maxPossibleScore }) {
   return (
     <div className="text-white mb-10 w-full">
       <progress
-        className="w-full rounded-full overflow-hidden w3-red"
-        value={index}
+        className="w-full rounded-full overflow-hidden bg-green-500"
+        value={index + 1}
         max={questionsLength}
       ></progress>
       <div className="flex justify-between">

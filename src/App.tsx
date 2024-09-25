@@ -12,7 +12,7 @@ import Footer from "./Footer";
 
 const API = "http://localhost:8000/questions";
 
-const SECS_PER_QUESTION = 1;
+const SECS_PER_QUESTION = 30;
 
 const initialState = {
   questions: [],
@@ -108,7 +108,6 @@ function App() {
   );
 
   const isAnswered = answer !== null ? true : false;
-  // const numQuestios = questions.length;
 
   useEffect(() => {
     async function apiCall() {

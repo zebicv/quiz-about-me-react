@@ -5,8 +5,8 @@ function Question({ question, dispatch, answer }) {
   const correctAnswer = question["correctOption"]; //1
 
   return (
-    <div className="flex flex-col min-w-[600px] mb-5">
-      <p className="text-white mb-4 text-xl font-semibold">
+    <div className="flex flex-col mb-5 w-full">
+      <p className="text-white mb-4 text-xl font-semibold text-wrap sm:text-left">
         {question?.question}
       </p>
       <ul className="flex flex-col gap-3 mb-4">
