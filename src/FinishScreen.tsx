@@ -1,5 +1,5 @@
 function FinishScreen({ score, maxPossibleScore, dispatch, highscore }) {
-  const percentage = (score / maxPossibleScore) * 100;
+  const percentage = ((score / maxPossibleScore) * 100).toFixed(2);
 
   const handleOnRestartGame = () => {
     dispatch({ type: "restartGame" });

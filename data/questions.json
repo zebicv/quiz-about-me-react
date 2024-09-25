@@ -1,22 +1,84 @@
 {
   "questions": [
     {
-      "question": "In which programming language did I write my first line of code?",
+      "question": "What programming language did I write the first line of code in?",
       "options": ["JavaScript", "Python", "C++", "Java"],
       "correctOption": 1,
       "points": 20
     },
     {
-      "question": "Which field did I graduate from?",
+      "question": "Which university did I graduate from?",
       "options": ["Economics", "Math", "Philosophy", "English language"],
       "correctOption": 0,
       "points": 10
     },
     {
-      "question": "In which year I had my first programming experience?",
+      "question": "What year did I have my first programming experience?",
       "options": [2021, 2018, 2022, 2024],
       "correctOption": 0,
       "points": 10
+    },
+    {
+      "question": "Which of the following hobbies is my favorite?",
+      "options": [
+        "Playing football",
+        "Writing",
+        "Reading books",
+        "Playing a guitar"
+      ],
+      "correctOption": 2,
+      "points": 10
+    },
+    {
+      "question": "Which country do I want to visit the most?",
+      "options": ["China", "USA", "Russia", "Italy"],
+      "correctOption": 3,
+      "points": 20
+    },
+    {
+      "question": "In which of the following technologies did I have experience?",
+      "options": ["Vue", "Angular", "Laravel", "Rust"],
+      "correctOption": 1,
+      "points": 20
+    },
+    {
+      "question": "Which field am I interested in, besides front-end web development?",
+      "options": [
+        "Artificial intelligence (AI)",
+        "Cybersecurity",
+        "Back-end",
+        "Data analysis"
+      ],
+      "correctOption": 2,
+      "points": 10
+    },
+    {
+      "question": "Which of the following is my favorite movie?",
+      "options": [
+        "Life is beautiful",
+        "Pulp fiction",
+        "Shawshank redemption",
+        "Taxi driver"
+      ],
+      "correctOption": 0,
+      "points": 20
+    },
+    {
+      "question": "Which sport did I play as a child?",
+      "options": ["Basketball", "Swimming", "Football", "Tennis"],
+      "correctOption": 3,
+      "points": 20
+    },
+    {
+      "question": "Which celebrity would I like to meet and talk to?",
+      "options": [
+        "Cristiano Ronaldo",
+        "Johnny Dep",
+        "Novak Djokovic",
+        "Michael Jordan"
+      ],
+      "correctOption": 2,
+      "points": 20
     }
   ]
 }
